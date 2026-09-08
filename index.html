@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdirizak Hirsi — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#26231F;
+    --sand:#EDE4D3;
+    --cream:#F7F4EC;
+    --teal:#1E3A34;
+    --teal-light:#2E4F47;
+    --clay:#A63A2C;
+    --line: rgba(38,35,31,0.14);
+    --maxw: 780px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Archivo', sans-serif;
+    color:var(--teal);
+    margin:0;
+    line-height:1.1;
+  }
+  a{color:var(--clay); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* HERO */
+  header.hero{
+    background:var(--teal);
+    color:var(--cream);
+    padding:88px 0 72px;
+  }
+  header.hero h1{
+    color:var(--cream);
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  header.hero p.role{
+    margin-top:14px;
+    font-size:1.15rem;
+    color:#CFE0DB;
+    max-width:52ch;
+  }
+  .lang-strip{
+    margin-top:44px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    border-top:1px solid rgba(247,244,236,0.25);
+  }
+  .lang-strip div{
+    flex:1 1 auto;
+    min-width:110px;
+    padding:16px 0 0;
+    border-right:1px solid rgba(247,244,236,0.25);
+    padding-right:16px;
+  }
+  .lang-strip div:last-child{border-right:none;}
+  .lang-strip .word{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--cream);
+  }
+  .lang-strip .native{
+    font-size:0.85rem;
+    color:#A9C4BC;
+    margin-top:2px;
+  }
+
+  main{background:var(--cream);}
+  section{padding:64px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  .eyebrow{
+    font-size:0.8rem;
+    color:var(--clay);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  section h2{
+    font-size:1.6rem;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  section > .wrap > p{max-width:62ch;}
+
+  /* ABOUT */
+  #about p{font-size:1.05rem;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{list-style:none; margin:0; padding:0;}
+  .timeline li{
+    position:relative;
+    padding:0 0 34px 46px;
+    border-left:2px solid var(--line);
+    margin-left:14px;
+  }
+  .timeline li:last-child{border-left:2px solid transparent; padding-bottom:0;}
+  .timeline .num{
+    position:absolute;
+    left:-15px;
+    top:0;
+    width:28px; height:28px;
+    background:var(--teal);
+    color:var(--cream);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Archivo', sans-serif;
+    font-size:0.8rem;
+    font-weight:700;
+  }
+  .timeline h3{font-size:1.1rem; font-weight:700;}
+  .timeline .meta{
+    font-size:0.85rem;
+    color:var(--clay);
+    font-weight:600;
+    margin-top:2px;
+  }
+  .timeline p{margin:8px 0 0; font-size:0.97rem; max-width:58ch;}
+
+  /* SKILLS / CERT */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .skill-grid h3{font-size:1rem; font-weight:700; margin-bottom:8px;}
+  .skill-grid p{margin:0; font-size:0.95rem; color:#4A453D;}
+
+  /* INTERESTS */
+  .interest-row{display:flex; flex-direction:column; gap:22px;}
+  .interest-row .item h3{font-size:1.05rem; font-weight:700;}
+  .interest-row .item p{margin:6px 0 0; font-size:0.97rem; max-width:58ch;}
+
+  /* CONTACT */
+  #contact{background:var(--teal); color:var(--cream);}
+  #contact h2{color:var(--cream);}
+  #contact .eyebrow{color:#A9C4BC;}
+  #contact p{color:#CFE0DB; max-width:52ch;}
+  .contact-links{margin-top:24px; display:flex; flex-wrap:wrap; gap:16px 28px;}
+  .contact-links a{
+    color:var(--cream);
+    font-weight:600;
+    border-bottom:1px solid rgba(247,244,236,0.4);
+    padding-bottom:2px;
+  }
+  .contact-links a:hover{border-color:var(--cream);}
+
+  footer{
+    text-align:left;
+    padding:28px 0 40px;
+    font-size:0.82rem;
+    color:#8A8578;
+  }
+
+  @media (max-width:600px){
+    header.hero{padding:56px 0 48px;}
+    .lang-strip div{min-width:45%; padding-right:12px;}
+    .skill-grid{grid-template-columns:1fr;}
+    section{padding:48px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Abdirizak Hirsi</h1>
+    <p class="role">Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.</p>
+    <div class="lang-strip">
+      <div><div class="word">English</div><div class="native">Fluent</div></div>
+      <div><div class="word">Español</div><div class="native">Fluido</div></div>
+      <div><div class="word">العربية</div><div class="native">طليق</div></div>
+      <div><div class="word">Soomaali</div><div class="native">Af hooyo</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">About</div>
+      <h2>Adaptable, hands-on, and comfortable across sectors</h2>
+      <p>I'm based in the Baix Ebre region of Catalonia and work across hospitality, logistics, construction, and freelance/virtual-assistant projects. Speaking English, Spanish, Arabic, and Somali lets me work directly with a wide range of teams and customers without a language barrier. I'm currently open to new roles while taking on freelance and project-based work.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">Experience</div>
+      <h2>Where I've worked</h2>
+      <ol class="timeline">
+        <li>
+          <span class="num">1</span>
+          <h3>Fishing industry work</h3>
+          <div class="meta">Manual labour · physically demanding, team-based work</div>
+          <p>Hands-on work in the fishing sector, requiring reliability, physical stamina, and coordination with a crew.</p>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <h3>Padesa</h3>
+          <div class="meta">Production / logistics environment</div>
+          <p>Worked within a structured production and logistics setting, following process and quality standards.</p>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <h3>K10 Sushi</h3>
+          <div class="meta">Hospitality — food preparation and service</div>
+          <p>Fast-paced kitchen and service environment, working under pressure while maintaining consistency and hygiene standards.</p>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <h3>Amazon</h3>
+          <div class="meta">Logistics / warehouse operations</div>
+          <p>Warehouse operations at scale — order accuracy, speed, and safety procedures in a high-volume logistics environment.</p>
+        </li>
+        <li>
+          <span class="num">5</span>
+          <h3>DHL</h3>
+          <div class="meta">Logistics / distribution</div>
+          <p>Parcel handling and distribution work, meeting delivery and processing targets within a logistics network.</p>
+        </li>
+        <li>
+          <span class="num">6</span>
+          <h3>McDonald's</h3>
+          <div class="meta">Hospitality — customer service and food service</div>
+          <p>Front-line customer service and food preparation in a high-throughput restaurant environment.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">Skills &amp; certification</div>
+      <h2>What I bring</h2>
+      <div class="skill-grid">
+        <div>
+          <h3>Certificat de professionalitat — IFCT0108</h3>
+          <p>Microinformàtica, completed through Institut Ebre / SOC.</p>
+        </div>
+        <div>
+          <h3>Four working languages</h3>
+          <p>English, Spanish, Arabic, and Somali — spoken and written, used interchangeably day to day.</p>
+        </div>
+        <div>
+          <h3>Cross-sector experience</h3>
+          <p>Hospitality, logistics, warehouse, production, and manual labour roles.</p>
+        </div>
+        <div>
+          <h3>Freelance &amp; remote support</h3>
+          <p>Virtual-assistant style project work, drawing on the four-language skillset for international clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="wrap">
+      <div class="eyebrow">Beyond work</div>
+      <h2>Interests</h2>
+      <div class="interest-row">
+        <div class="item">
+          <h3>Football &amp; refereeing</h3>
+          <p>Active interest in football, with a connection to the refereeing side of the game.</p>
+        </div>
+        <div class="item">
+          <h3>Content creation</h3>
+          <p>Interested in social media content creation as a creative and communication outlet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's talk</h2>
+      <p>Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.</p>
+      <div class="contact-links">
+        <a href="mailto:your-email@example.com">your-email@example.com</a>
+        <a href="tel:+34000000000">+34 000 000 000</a>
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    Abdirizak Hirsi — Tortosa, Catalonia
+  </div>
+</footer>
+
+</body>
+</html>
