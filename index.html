@@ -6,7 +6,7 @@
 <title>Abdirizak Hirsi — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#26231F;
@@ -28,11 +28,15 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
+  html[lang="ar"] body{ font-family:'Noto Sans Arabic', 'Inter', sans-serif; }
   h1,h2,h3{
     font-family:'Archivo', sans-serif;
     color:var(--teal);
     margin:0;
     line-height:1.1;
+  }
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3{
+    font-family:'Noto Sans Arabic', sans-serif;
   }
   a{color:var(--clay); text-decoration:none;}
   a:hover{text-decoration:underline;}
@@ -40,17 +44,57 @@
 
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
 
+  /* LANGUAGE SWITCHER */
+  .lang-switch{
+    background:var(--ink);
+  }
+  .lang-switch .wrap{
+    display:flex;
+    gap:2px;
+    padding-left:0;
+    padding-right:0;
+  }
+  .lang-switch button{
+    background:transparent;
+    border:none;
+    color:#B9B4A6;
+    font-family:'Archivo', sans-serif;
+    font-size:0.85rem;
+    font-weight:600;
+    padding:13px 18px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+  }
+  .lang-switch button:hover{color:var(--cream);}
+  .lang-switch button.active{
+    color:var(--cream);
+    border-bottom:2px solid var(--clay);
+  }
+
   /* HERO */
   header.hero{
     background:var(--teal);
     color:var(--cream);
-    padding:88px 0 72px;
+    padding:64px 0 72px;
   }
   header.hero h1{
     color:var(--cream);
     font-size:clamp(2.4rem, 6vw, 3.6rem);
     font-weight:800;
     letter-spacing:-0.01em;
+  }
+  .hero-top{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .profile-photo{
+    width:104px;
+    height:104px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid rgba(247,244,236,0.35);
+    flex-shrink:0;
   }
   header.hero p.role{
     margin-top:14px;
@@ -171,20 +215,56 @@
     color:#8A8578;
   }
 
+  /* RTL OVERRIDES (Arabic) */
+  html[dir="rtl"] footer{text-align:right;}
+  html[dir="rtl"] .lang-strip div{
+    border-right:none;
+    border-left:1px solid rgba(247,244,236,0.25);
+    padding-right:0;
+    padding-left:16px;
+  }
+  html[dir="rtl"] .lang-strip div:last-child{border-left:none;}
+  html[dir="rtl"] .timeline li{
+    padding:0 46px 34px 0;
+    border-left:none;
+    border-right:2px solid var(--line);
+    margin-left:0;
+    margin-right:14px;
+  }
+  html[dir="rtl"] .timeline li:last-child{border-right:2px solid transparent;}
+  html[dir="rtl"] .timeline .num{ left:auto; right:-15px; }
+
   @media (max-width:600px){
-    header.hero{padding:56px 0 48px;}
+    header.hero{padding:48px 0 48px;}
     .lang-strip div{min-width:45%; padding-right:12px;}
     .skill-grid{grid-template-columns:1fr;}
     section{padding:48px 0;}
+    .lang-switch button{padding:12px 12px; font-size:0.8rem;}
+    .hero-top{flex-direction:column; align-items:flex-start; gap:18px;}
+    .profile-photo{width:84px; height:84px;}
   }
 </style>
 </head>
 <body>
 
+<nav class="lang-switch">
+  <div class="wrap">
+    <button type="button" data-lang="en" class="active">English</button>
+    <button type="button" data-lang="es">Español</button>
+    <button type="button" data-lang="ca">Català</button>
+    <button type="button" data-lang="ar">العربية</button>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="wrap">
-    <h1>Abdirizak Hirsi</h1>
-    <p class="role">Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.</p>
+    <div class="hero-top">
+      <img src="profile.jpg" alt="Abdirizak Hirsi" class="profile-photo">
+      <div>
+        <h1>Abdirizak Hirsi</h1>
+        <p class="role" data-i18n="role">Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.</p>
+      </div>
+    </div>
     <div class="lang-strip">
       <div><div class="word">English</div><div class="native">Fluent</div></div>
       <div><div class="word">Español</div><div class="native">Fluido</div></div>
@@ -198,52 +278,52 @@
 
   <section id="about">
     <div class="wrap">
-      <div class="eyebrow">About</div>
-      <h2>Adaptable, hands-on, and comfortable across sectors</h2>
-      <p>I'm based in the Baix Ebre region of Catalonia and work across hospitality, logistics, construction, and freelance/virtual-assistant projects. Speaking English, Spanish, Arabic, and Somali lets me work directly with a wide range of teams and customers without a language barrier. I'm currently open to new roles while taking on freelance and project-based work.</p>
+      <div class="eyebrow" data-i18n="eyebrow_about">About</div>
+      <h2 data-i18n="about_title">Adaptable, hands-on, and comfortable across sectors</h2>
+      <p data-i18n="about_text">I'm based in the Baix Ebre region of Catalonia and work across hospitality, logistics, construction, and freelance/virtual-assistant projects. Speaking English, Spanish, Arabic, and Somali lets me work directly with a wide range of teams and customers without a language barrier. I'm currently open to new roles while taking on freelance and project-based work.</p>
     </div>
   </section>
 
   <section id="experience">
     <div class="wrap">
-      <div class="eyebrow">Experience</div>
-      <h2>Where I've worked</h2>
+      <div class="eyebrow" data-i18n="eyebrow_experience">Experience</div>
+      <h2 data-i18n="experience_title">Where I've worked</h2>
       <ol class="timeline">
         <li>
           <span class="num">1</span>
-          <h3>Fishing industry work</h3>
-          <div class="meta">Manual labour · physically demanding, team-based work</div>
-          <p>Hands-on work in the fishing sector, requiring reliability, physical stamina, and coordination with a crew.</p>
+          <h3 data-i18n="exp1_title">Fishing industry work</h3>
+          <div class="meta" data-i18n="exp1_meta">Manual labour · physically demanding, team-based work</div>
+          <p data-i18n="exp1_desc">Hands-on work in the fishing sector, requiring reliability, physical stamina, and coordination with a crew.</p>
         </li>
         <li>
           <span class="num">2</span>
-          <h3>Padesa</h3>
-          <div class="meta">Production / logistics environment</div>
-          <p>Worked within a structured production and logistics setting, following process and quality standards.</p>
+          <h3 data-i18n="exp2_title">Padesa</h3>
+          <div class="meta" data-i18n="exp2_meta">Production / logistics environment</div>
+          <p data-i18n="exp2_desc">Worked within a structured production and logistics setting, following process and quality standards.</p>
         </li>
         <li>
           <span class="num">3</span>
-          <h3>K10 Sushi</h3>
-          <div class="meta">Hospitality — food preparation and service</div>
-          <p>Fast-paced kitchen and service environment, working under pressure while maintaining consistency and hygiene standards.</p>
+          <h3 data-i18n="exp3_title">K10 Sushi</h3>
+          <div class="meta" data-i18n="exp3_meta">Hospitality — food preparation and service</div>
+          <p data-i18n="exp3_desc">Fast-paced kitchen and service environment, working under pressure while maintaining consistency and hygiene standards.</p>
         </li>
         <li>
           <span class="num">4</span>
-          <h3>Amazon</h3>
-          <div class="meta">Logistics / warehouse operations</div>
-          <p>Warehouse operations at scale — order accuracy, speed, and safety procedures in a high-volume logistics environment.</p>
+          <h3 data-i18n="exp4_title">Amazon</h3>
+          <div class="meta" data-i18n="exp4_meta">Logistics / warehouse operations</div>
+          <p data-i18n="exp4_desc">Warehouse operations at scale — order accuracy, speed, and safety procedures in a high-volume logistics environment.</p>
         </li>
         <li>
           <span class="num">5</span>
-          <h3>DHL</h3>
-          <div class="meta">Logistics / distribution</div>
-          <p>Parcel handling and distribution work, meeting delivery and processing targets within a logistics network.</p>
+          <h3 data-i18n="exp5_title">DHL</h3>
+          <div class="meta" data-i18n="exp5_meta">Logistics / distribution</div>
+          <p data-i18n="exp5_desc">Parcel handling and distribution work, meeting delivery and processing targets within a logistics network.</p>
         </li>
         <li>
           <span class="num">6</span>
-          <h3>McDonald's</h3>
-          <div class="meta">Hospitality — customer service and food service</div>
-          <p>Front-line customer service and food preparation in a high-throughput restaurant environment.</p>
+          <h3 data-i18n="exp6_title">McDonald's</h3>
+          <div class="meta" data-i18n="exp6_meta">Hospitality — customer service and food service</div>
+          <p data-i18n="exp6_desc">Front-line customer service and food preparation in a high-throughput restaurant environment.</p>
         </li>
       </ol>
     </div>
@@ -251,24 +331,24 @@
 
   <section id="skills">
     <div class="wrap">
-      <div class="eyebrow">Skills &amp; certification</div>
-      <h2>What I bring</h2>
+      <div class="eyebrow" data-i18n="eyebrow_skills">Skills &amp; certification</div>
+      <h2 data-i18n="skills_title">What I bring</h2>
       <div class="skill-grid">
         <div>
-          <h3>Certificat de professionalitat — IFCT0108</h3>
-          <p>Microinformàtica, completed through Institut Ebre / SOC.</p>
+          <h3 data-i18n="skill1_title">Certificat de professionalitat — IFCT0108</h3>
+          <p data-i18n="skill1_desc">Microinformàtica, completed through Institut Ebre / SOC.</p>
         </div>
         <div>
-          <h3>Four working languages</h3>
-          <p>English, Spanish, Arabic, and Somali — spoken and written, used interchangeably day to day.</p>
+          <h3 data-i18n="skill2_title">Four working languages</h3>
+          <p data-i18n="skill2_desc">English, Spanish, Arabic, and Somali — spoken and written, used interchangeably day to day.</p>
         </div>
         <div>
-          <h3>Cross-sector experience</h3>
-          <p>Hospitality, logistics, warehouse, production, and manual labour roles.</p>
+          <h3 data-i18n="skill3_title">Cross-sector experience</h3>
+          <p data-i18n="skill3_desc">Hospitality, logistics, warehouse, production, and manual labour roles.</p>
         </div>
         <div>
-          <h3>Freelance &amp; remote support</h3>
-          <p>Virtual-assistant style project work, drawing on the four-language skillset for international clients.</p>
+          <h3 data-i18n="skill4_title">Freelance &amp; remote support</h3>
+          <p data-i18n="skill4_desc">Virtual-assistant style project work, drawing on the four-language skillset for international clients.</p>
         </div>
       </div>
     </div>
@@ -276,16 +356,16 @@
 
   <section id="interests">
     <div class="wrap">
-      <div class="eyebrow">Beyond work</div>
-      <h2>Interests</h2>
+      <div class="eyebrow" data-i18n="eyebrow_interests">Beyond work</div>
+      <h2 data-i18n="interests_title">Interests</h2>
       <div class="interest-row">
         <div class="item">
-          <h3>Football &amp; refereeing</h3>
-          <p>Active interest in football, with a connection to the refereeing side of the game.</p>
+          <h3 data-i18n="interest1_title">Football &amp; refereeing</h3>
+          <p data-i18n="interest1_desc">Active interest in football, with a connection to the refereeing side of the game.</p>
         </div>
         <div class="item">
-          <h3>Content creation</h3>
-          <p>Interested in social media content creation as a creative and communication outlet.</p>
+          <h3 data-i18n="interest2_title">Content creation</h3>
+          <p data-i18n="interest2_desc">Interested in social media content creation as a creative and communication outlet.</p>
         </div>
       </div>
     </div>
@@ -293,13 +373,13 @@
 
   <section id="contact">
     <div class="wrap">
-      <div class="eyebrow">Get in touch</div>
-      <h2>Let's talk</h2>
-      <p>Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.</p>
+      <div class="eyebrow" data-i18n="eyebrow_contact">Get in touch</div>
+      <h2 data-i18n="contact_title">Let's talk</h2>
+      <p data-i18n="contact_text">Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.</p>
       <div class="contact-links">
         <a href="mailto:updihirsi2023@gmail.com">updihirsi2023@gmail.com</a>
-        <a href="tel:+34671931375">+34 671 9313 75</a>
-       
+        <a href="tel:+34671931375">+34 671 931 375</a>
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
@@ -307,10 +387,153 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap" data-i18n="footer_location">
     Abdirizak Hirsi — Tortosa, Catalonia
   </div>
 </footer>
+
+<script>
+const translations = {
+  en: {
+    role: "Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.",
+    eyebrow_about: "About",
+    about_title: "Adaptable, hands-on, and comfortable across sectors",
+    about_text: "I'm based in the Baix Ebre region of Catalonia and work across hospitality, logistics, construction, and freelance/virtual-assistant projects. Speaking English, Spanish, Arabic, and Somali lets me work directly with a wide range of teams and customers without a language barrier. I'm currently open to new roles while taking on freelance and project-based work.",
+    eyebrow_experience: "Experience",
+    experience_title: "Where I've worked",
+    exp1_title: "Fishing industry work", exp1_meta: "Manual labour · physically demanding, team-based work", exp1_desc: "Hands-on work in the fishing sector, requiring reliability, physical stamina, and coordination with a crew.",
+    exp2_title: "Padesa", exp2_meta: "Production / logistics environment", exp2_desc: "Worked within a structured production and logistics setting, following process and quality standards.",
+    exp3_title: "K10 Sushi", exp3_meta: "Hospitality — food preparation and service", exp3_desc: "Fast-paced kitchen and service environment, working under pressure while maintaining consistency and hygiene standards.",
+    exp4_title: "Amazon", exp4_meta: "Logistics / warehouse operations", exp4_desc: "Warehouse operations at scale — order accuracy, speed, and safety procedures in a high-volume logistics environment.",
+    exp5_title: "DHL", exp5_meta: "Logistics / distribution", exp5_desc: "Parcel handling and distribution work, meeting delivery and processing targets within a logistics network.",
+    exp6_title: "McDonald's", exp6_meta: "Hospitality — customer service and food service", exp6_desc: "Front-line customer service and food preparation in a high-throughput restaurant environment.",
+    eyebrow_skills: "Skills &amp; certification",
+    skills_title: "What I bring",
+    skill1_title: "Certificat de professionalitat — IFCT0108", skill1_desc: "Microinformàtica, completed through Institut Ebre / SOC.",
+    skill2_title: "Four working languages", skill2_desc: "English, Spanish, Arabic, and Somali — spoken and written, used interchangeably day to day.",
+    skill3_title: "Cross-sector experience", skill3_desc: "Hospitality, logistics, warehouse, production, and manual labour roles.",
+    skill4_title: "Freelance &amp; remote support", skill4_desc: "Virtual-assistant style project work, drawing on the four-language skillset for international clients.",
+    eyebrow_interests: "Beyond work",
+    interests_title: "Interests",
+    interest1_title: "Football &amp; refereeing", interest1_desc: "Active interest in football, with a connection to the refereeing side of the game.",
+    interest2_title: "Content creation", interest2_desc: "Interested in social media content creation as a creative and communication outlet.",
+    eyebrow_contact: "Get in touch",
+    contact_title: "Let's talk",
+    contact_text: "Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.",
+    footer_location: "Abdirizak Hirsi — Tortosa, Catalonia"
+  },
+  es: {
+    role: "Trabajador multilingüe en Tortosa, Cataluña — hostelería, logística, construcción y trabajo remoto, en cuatro idiomas.",
+    eyebrow_about: "Sobre mí",
+    about_title: "Adaptable, práctico y cómodo en distintos sectores",
+    about_text: "Vivo en la comarca del Baix Ebre, en Cataluña, y trabajo en hostelería, logística, construcción y proyectos freelance o de asistencia virtual. Hablar inglés, español, árabe y somalí me permite trabajar directamente con equipos y clientes muy diversos sin barrera de idioma. Actualmente estoy abierto a nuevas oportunidades mientras realizo trabajos freelance y por proyectos.",
+    eyebrow_experience: "Experiencia",
+    experience_title: "Dónde he trabajado",
+    exp1_title: "Sector pesquero", exp1_meta: "Trabajo manual · físicamente exigente, en equipo", exp1_desc: "Trabajo práctico en el sector pesquero, que requiere fiabilidad, resistencia física y coordinación con la tripulación.",
+    exp2_title: "Padesa", exp2_meta: "Entorno de producción / logística", exp2_desc: "Trabajé en un entorno de producción y logística estructurado, siguiendo procesos y estándares de calidad.",
+    exp3_title: "K10 Sushi", exp3_meta: "Hostelería — preparación y servicio de alimentos", exp3_desc: "Entorno de cocina y servicio de ritmo rápido, trabajando bajo presión mientras se mantienen los estándares de consistencia e higiene.",
+    exp4_title: "Amazon", exp4_meta: "Logística / operaciones de almacén", exp4_desc: "Operaciones de almacén a gran escala: precisión en pedidos, rapidez y procedimientos de seguridad en un entorno logístico de alto volumen.",
+    exp5_title: "DHL", exp5_meta: "Logística / distribución", exp5_desc: "Manejo y distribución de paquetes, cumpliendo objetivos de entrega y procesamiento dentro de una red logística.",
+    exp6_title: "McDonald's", exp6_meta: "Hostelería — atención al cliente y servicio de comida", exp6_desc: "Atención al cliente de primera línea y preparación de alimentos en un entorno de restaurante de alto rendimiento.",
+    eyebrow_skills: "Habilidades y certificación",
+    skills_title: "Lo que aporto",
+    skill1_title: "Certificat de professionalitat — IFCT0108", skill1_desc: "Microinformática, completado a través del Institut Ebre / SOC.",
+    skill2_title: "Cuatro idiomas de trabajo", skill2_desc: "Inglés, español, árabe y somalí — hablados y escritos, usados indistintamente cada día.",
+    skill3_title: "Experiencia en varios sectores", skill3_desc: "Hostelería, logística, almacén, producción y trabajos manuales.",
+    skill4_title: "Freelance y soporte remoto", skill4_desc: "Trabajo tipo asistente virtual, aprovechando el dominio de cuatro idiomas para clientes internacionales.",
+    eyebrow_interests: "Más allá del trabajo",
+    interests_title: "Intereses",
+    interest1_title: "Fútbol y arbitraje", interest1_desc: "Interés activo en el fútbol, con vínculo al mundo del arbitraje.",
+    interest2_title: "Creación de contenido", interest2_desc: "Interés en la creación de contenido para redes sociales como vía creativa y de comunicación.",
+    eyebrow_contact: "Contacto",
+    contact_title: "Hablemos",
+    contact_text: "Abierto a oportunidades en hostelería, logística, construcción y trabajo freelance. Contacta directamente abajo.",
+    footer_location: "Abdirizak Hirsi — Tortosa, Cataluña"
+  },
+  ca: {
+    role: "Treballador multilingüe a Tortosa, Catalunya — hostaleria, logística, construcció i treball remot, en quatre idiomes.",
+    eyebrow_about: "Sobre mi",
+    about_title: "Adaptable, pràctic i còmode en diversos sectors",
+    about_text: "Visc a la comarca del Baix Ebre, a Catalunya, i treballo en hostaleria, logística, construcció i projectes freelance o d'assistència virtual. Parlar anglès, espanyol, àrab i somali em permet treballar directament amb equips i clients molt diversos sense barrera d'idioma. Actualment estic obert a noves oportunitats mentre faig treballs freelance i per projectes.",
+    eyebrow_experience: "Experiència",
+    experience_title: "On he treballat",
+    exp1_title: "Sector pesquer", exp1_meta: "Treball manual · físicament exigent, en equip", exp1_desc: "Treball pràctic al sector pesquer, que requereix fiabilitat, resistència física i coordinació amb la tripulació.",
+    exp2_title: "Padesa", exp2_meta: "Entorn de producció / logística", exp2_desc: "Vaig treballar en un entorn de producció i logística estructurat, seguint processos i estàndards de qualitat.",
+    exp3_title: "K10 Sushi", exp3_meta: "Hostaleria — preparació i servei d'aliments", exp3_desc: "Entorn de cuina i servei de ritme ràpid, treballant sota pressió tot mantenint estàndards de consistència i higiene.",
+    exp4_title: "Amazon", exp4_meta: "Logística / operacions de magatzem", exp4_desc: "Operacions de magatzem a gran escala: precisió en comandes, rapidesa i procediments de seguretat en un entorn logístic d'alt volum.",
+    exp5_title: "DHL", exp5_meta: "Logística / distribució", exp5_desc: "Gestió i distribució de paquets, complint objectius de lliurament i processament dins d'una xarxa logística.",
+    exp6_title: "McDonald's", exp6_meta: "Hostaleria — atenció al client i servei d'àpats", exp6_desc: "Atenció al client de primera línia i preparació d'aliments en un entorn de restaurant d'alt rendiment.",
+    eyebrow_skills: "Habilitats i certificació",
+    skills_title: "Què aporto",
+    skill1_title: "Certificat de professionalitat — IFCT0108", skill1_desc: "Microinformàtica, completat a través de l'Institut Ebre / SOC.",
+    skill2_title: "Quatre idiomes de treball", skill2_desc: "Anglès, espanyol, àrab i somali — parlats i escrits, utilitzats indistintament cada dia.",
+    skill3_title: "Experiència en diversos sectors", skill3_desc: "Hostaleria, logística, magatzem, producció i treballs manuals.",
+    skill4_title: "Freelance i suport remot", skill4_desc: "Treball tipus assistent virtual, aprofitant el domini de quatre idiomes per a clients internacionals.",
+    eyebrow_interests: "Més enllà de la feina",
+    interests_title: "Interessos",
+    interest1_title: "Futbol i arbitratge", interest1_desc: "Interès actiu en el futbol, amb vincle al món de l'arbitratge.",
+    interest2_title: "Creació de contingut", interest2_desc: "Interès en la creació de contingut per a xarxes socials com a via creativa i de comunicació.",
+    eyebrow_contact: "Contacte",
+    contact_title: "Parlem",
+    contact_text: "Obert a oportunitats en hostaleria, logística, construcció i treball freelance. Contacta directament a sota.",
+    footer_location: "Abdirizak Hirsi — Tortosa, Catalunya"
+  },
+  ar: {
+    role: "عامل متعدد اللغات مقيم في تورتوسا، كتالونيا — يعمل في الضيافة واللوجستيات والبناء والعمل عن بُعد بأربع لغات.",
+    eyebrow_about: "نبذة عني",
+    about_title: "قادر على التكيف وعملي ومرتاح في قطاعات متعددة",
+    about_text: "أقيم في منطقة الإيبرة السفلى (Baix Ebre) في كتالونيا، وأعمل في مجالات الضيافة واللوجستيات والبناء والمشاريع الحرة وأعمال المساعدة الافتراضية. تحدثي الإنجليزية والإسبانية والعربية والصومالية يتيح لي العمل مباشرة مع فرق وعملاء متنوعين دون حاجز لغوي. أنا حاليًا منفتح على فرص عمل جديدة بينما أقوم بأعمال حرة ومشاريع مؤقتة.",
+    eyebrow_experience: "الخبرة",
+    experience_title: "أماكن عملي",
+    exp1_title: "قطاع صيد الأسماك", exp1_meta: "عمل يدوي · متطلب جسديًا وضمن فريق", exp1_desc: "عمل ميداني في قطاع صيد الأسماك، يتطلب الموثوقية والقدرة على التحمل الجسدي والتنسيق مع الطاقم.",
+    exp2_title: "Padesa", exp2_meta: "بيئة إنتاج / لوجستيات", exp2_desc: "عملت ضمن بيئة إنتاج ولوجستيات منظمة، مع اتباع الإجراءات ومعايير الجودة.",
+    exp3_title: "K10 Sushi", exp3_meta: "الضيافة — تحضير الطعام وتقديم الخدمة", exp3_desc: "بيئة مطبخ وخدمة سريعة الوتيرة، العمل تحت الضغط مع الحفاظ على معايير الاتساق والنظافة.",
+    exp4_title: "Amazon", exp4_meta: "لوجستيات / عمليات المستودعات", exp4_desc: "عمليات مستودعات واسعة النطاق — دقة الطلبات والسرعة وإجراءات السلامة في بيئة لوجستية عالية الحجم.",
+    exp5_title: "DHL", exp5_meta: "لوجستيات / توزيع", exp5_desc: "مناولة الطرود وتوزيعها، وتحقيق أهداف التسليم والمعالجة ضمن شبكة لوجستية.",
+    exp6_title: "McDonald's", exp6_meta: "الضيافة — خدمة العملاء وتقديم الطعام", exp6_desc: "خدمة عملاء مباشرة وتحضير طعام في بيئة مطعم عالية الحركة.",
+    eyebrow_skills: "المهارات والشهادات",
+    skills_title: "ما أقدمه",
+    skill1_title: "شهادة مهنية — IFCT0108", skill1_desc: "في المعلوماتية الدقيقة، تمت من خلال معهد إيبرة / خدمة التوظيف الكتالونية (SOC).",
+    skill2_title: "أربع لغات عمل", skill2_desc: "الإنجليزية والإسبانية والعربية والصومالية — محادثة وكتابة، تُستخدم بالتبادل يوميًا.",
+    skill3_title: "خبرة في قطاعات متعددة", skill3_desc: "الضيافة واللوجستيات والمستودعات والإنتاج والأعمال اليدوية.",
+    skill4_title: "عمل حر ودعم عن بُعد", skill4_desc: "عمل بأسلوب المساعد الافتراضي، بالاستفادة من إتقان أربع لغات لخدمة عملاء دوليين.",
+    eyebrow_interests: "اهتمامات",
+    interests_title: "الاهتمامات",
+    interest1_title: "كرة القدم والتحكيم", interest1_desc: "اهتمام فعلي بكرة القدم، مع صلة بعالم التحكيم.",
+    interest2_title: "إنشاء المحتوى", interest2_desc: "اهتمام بإنشاء محتوى لوسائل التواصل الاجتماعي كمنفذ إبداعي وتواصلي.",
+    eyebrow_contact: "تواصل معي",
+    contact_title: "لنتحدث",
+    contact_text: "منفتح على فرص في الضيافة واللوجستيات والبناء والعمل الحر. تواصل مباشرة أدناه.",
+    footer_location: "عبد الرزاق حرسي — تورتوسا، كتالونيا"
+  }
+};
+
+function setLanguage(lang){
+  const dict = translations[lang];
+  if(!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  try { localStorage.setItem('site-lang', lang); } catch(e){}
+}
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+});
+
+let initialLang = 'en';
+try {
+  const saved = localStorage.getItem('site-lang');
+  if(saved && translations[saved]) initialLang = saved;
+} catch(e){}
+setLanguage(initialLang);
+</script>
 
 </body>
 </html>
