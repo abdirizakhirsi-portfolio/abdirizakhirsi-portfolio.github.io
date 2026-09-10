@@ -317,6 +317,26 @@
     font-size:0.82rem;
     color:#8A8578;
   }
+  .made-with{
+    margin-top:6px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .made-with .heart{
+    color:var(--clay);
+    display:inline-block;
+    animation:heartbeat 1.4s ease-in-out infinite;
+  }
+  @keyframes heartbeat{
+    0%, 100%{ transform:scale(1); }
+    25%{ transform:scale(1.25); }
+    40%{ transform:scale(1); }
+    60%{ transform:scale(1.18); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .made-with .heart{ animation:none; }
+  }
 
   /* RTL OVERRIDES (Arabic) */
   html[dir="rtl"] footer{text-align:right;}
@@ -508,8 +528,13 @@
 </main>
 
 <footer>
-  <div class="wrap" data-i18n="footer_location">
-    Abdirizak Hirsi — Tortosa, Catalonia
+  <div class="wrap">
+    <div data-i18n="footer_location">Abdirizak Hirsi — Tortosa, Catalonia</div>
+    <div class="made-with">
+      <span data-i18n="made_with_prefix">Made with</span>
+      <span class="heart" aria-hidden="true">♥</span>
+      <span data-i18n="made_with_suffix">by Abdirizak Hirsi</span>
+    </div>
   </div>
 </footer>
 
@@ -545,7 +570,8 @@ const translations = {
     form_name_label: "Name", form_email_label: "Email", form_message_label: "Message", form_submit: "Send message",
     form_heading: "Send a message", form_description: "Prefer writing it out? Fill in the form below and I'll get back to you directly.",
     form_sending: "Sending…", form_success: "Thanks — your message has been sent.", form_error: "Something went wrong. Please try again or email me directly.",
-    footer_location: "Abdirizak Hirsi — Tortosa, Catalonia"
+    footer_location: "Abdirizak Hirsi — Tortosa, Catalonia",
+    made_with_prefix: "Made with", made_with_suffix: "by Abdirizak Hirsi"
   },
   es: {
     status_badge: "Disponible para trabajar",
@@ -577,7 +603,8 @@ const translations = {
     form_name_label: "Nombre", form_email_label: "Correo electrónico", form_message_label: "Mensaje", form_submit: "Enviar mensaje",
     form_heading: "Envía un mensaje", form_description: "¿Prefieres escribirlo? Rellena el formulario y te responderé directamente.",
     form_sending: "Enviando…", form_success: "Gracias — tu mensaje ha sido enviado.", form_error: "Algo salió mal. Inténtalo de nuevo o escríbeme directamente por correo.",
-    footer_location: "Abdirizak Hirsi — Tortosa, Cataluña"
+    footer_location: "Abdirizak Hirsi — Tortosa, Cataluña",
+    made_with_prefix: "Hecho con", made_with_suffix: "por Abdirizak Hirsi"
   },
   ca: {
     status_badge: "Disponible per treballar",
@@ -609,7 +636,8 @@ const translations = {
     form_name_label: "Nom", form_email_label: "Correu electrònic", form_message_label: "Missatge", form_submit: "Enviar missatge",
     form_heading: "Envia un missatge", form_description: "Prefereixes escriure-ho? Omple el formulari i et respondré directament.",
     form_sending: "Enviant…", form_success: "Gràcies — el teu missatge ha estat enviat.", form_error: "Alguna cosa ha fallat. Torna-ho a provar o escriu-me directament per correu.",
-    footer_location: "Abdirizak Hirsi — Tortosa, Catalunya"
+    footer_location: "Abdirizak Hirsi — Tortosa, Catalunya",
+    made_with_prefix: "Fet amb", made_with_suffix: "per Abdirizak Hirsi"
   },
   ar: {
     status_badge: "متاح للعمل",
@@ -641,7 +669,8 @@ const translations = {
     form_name_label: "الاسم", form_email_label: "البريد الإلكتروني", form_message_label: "الرسالة", form_submit: "إرسال الرسالة",
     form_heading: "أرسل رسالة", form_description: "هل تفضل الكتابة؟ املأ النموذج أدناه وسأرد عليك مباشرة.",
     form_sending: "جارٍ الإرسال…", form_success: "شكرًا — تم إرسال رسالتك.", form_error: "حدث خطأ ما. حاول مرة أخرى أو راسلني مباشرة عبر البريد الإلكتروني.",
-    footer_location: "عبد الرزاق حرسي — تورتوسا، كتالونيا"
+    footer_location: "عبد الرزاق حرسي — تورتوسا، كتالونيا",
+    made_with_prefix: "صُنع بـ", made_with_suffix: "بواسطة عبد الرزاق حرسي"
   }
 };
 
