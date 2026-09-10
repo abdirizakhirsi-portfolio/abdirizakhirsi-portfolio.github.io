@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdirizak Hirsi — Portfolio</title>
+<title>Abdirizak Hirsi — Multilingual Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231E3A34'/%3E%3Ctext x='32' y='43' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='%23F7F4EC' text-anchor='middle'%3EAH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,7 +23,9 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--sand);
+    background:
+      radial-gradient(rgba(38,35,31,0.05) 1px, transparent 1px) 0 0/16px 16px,
+      var(--sand);
     color:var(--ink);
     font-family:'Inter', -apple-system, sans-serif;
     line-height:1.6;
@@ -73,7 +76,9 @@
 
   /* HERO */
   header.hero{
-    background:var(--teal);
+    background:
+      radial-gradient(rgba(247,244,236,0.05) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal);
     color:var(--cream);
     padding:64px 0 72px;
   }
@@ -82,6 +87,27 @@
     font-size:clamp(2.4rem, 6vw, 3.6rem);
     font-weight:800;
     letter-spacing:-0.01em;
+  }
+  .status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:rgba(247,244,236,0.1);
+    border:1px solid rgba(247,244,236,0.25);
+    color:var(--cream);
+    font-size:0.75rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:5px 13px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .status-badge .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:#6FCB8E;
+    flex-shrink:0;
   }
   .hero-top{
     display:flex;
@@ -129,7 +155,11 @@
     margin-top:2px;
   }
 
-  main{background:var(--cream);}
+  main{
+    background:
+      radial-gradient(rgba(38,35,31,0.045) 1px, transparent 1px) 0 0/16px 16px,
+      var(--cream);
+  }
   section{padding:64px 0; border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
 
@@ -195,7 +225,12 @@
   .interest-row .item p{margin:6px 0 0; font-size:0.97rem; max-width:58ch;}
 
   /* CONTACT */
-  #contact{background:var(--teal); color:var(--cream);}
+  #contact{
+    background:
+      radial-gradient(rgba(247,244,236,0.05) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal);
+    color:var(--cream);
+  }
   #contact h2{color:var(--cream);}
   #contact .eyebrow{color:#A9C4BC;}
   #contact p{color:#CFE0DB; max-width:52ch;}
@@ -329,6 +364,7 @@
     <div class="hero-top">
       <img src="profile.jpg" alt="Abdirizak Hirsi" class="profile-photo">
       <div>
+        <div class="status-badge"><span class="dot"></span><span data-i18n="status_badge">Open to work</span></div>
         <h1>Abdirizak Hirsi</h1>
         <p class="role" data-i18n="role">Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.</p>
       </div>
@@ -480,6 +516,7 @@
 <script>
 const translations = {
   en: {
+    status_badge: "Open to work",
     role: "Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.",
     eyebrow_about: "About",
     about_title: "Adaptable, hands-on, and comfortable across sectors",
@@ -511,6 +548,7 @@ const translations = {
     footer_location: "Abdirizak Hirsi — Tortosa, Catalonia"
   },
   es: {
+    status_badge: "Disponible para trabajar",
     role: "Trabajador multilingüe en Tortosa, Cataluña — hostelería, logística, construcción y trabajo remoto, en cuatro idiomas.",
     eyebrow_about: "Sobre mí",
     about_title: "Adaptable, práctico y cómodo en distintos sectores",
@@ -542,6 +580,7 @@ const translations = {
     footer_location: "Abdirizak Hirsi — Tortosa, Cataluña"
   },
   ca: {
+    status_badge: "Disponible per treballar",
     role: "Treballador multilingüe a Tortosa, Catalunya — hostaleria, logística, construcció i treball remot, en quatre idiomes.",
     eyebrow_about: "Sobre mi",
     about_title: "Adaptable, pràctic i còmode en diversos sectors",
@@ -573,6 +612,7 @@ const translations = {
     footer_location: "Abdirizak Hirsi — Tortosa, Catalunya"
   },
   ar: {
+    status_badge: "متاح للعمل",
     role: "عامل متعدد اللغات مقيم في تورتوسا، كتالونيا — يعمل في الضيافة واللوجستيات والبناء والعمل عن بُعد بأربع لغات.",
     eyebrow_about: "نبذة عني",
     about_title: "قادر على التكيف وعملي ومرتاح في قطاعات متعددة",
