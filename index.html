@@ -447,7 +447,7 @@
       <div class="contact-links">
         <a href="mailto:updihirsi2023@gmail.com">updihirsi2023@gmail.com</a>
         <a href="tel:+34671931375">+34 671 93 13 75</a>
-       
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
       </div>
 
       <form id="contact-form" class="contact-form">
@@ -655,7 +655,7 @@ contactForm.addEventListener('submit', async (e) => {
   cfStatus.textContent = dict.form_sending;
 
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/messages`, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/Messages`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON_KEY,
