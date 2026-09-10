@@ -199,6 +199,17 @@
   #contact h2{color:var(--cream);}
   #contact .eyebrow{color:#A9C4BC;}
   #contact p{color:#CFE0DB; max-width:52ch;}
+  .contact-form h3{
+    color:var(--cream);
+    font-size:1.15rem;
+    font-weight:700;
+    margin-top:0;
+  }
+  .contact-form .form-desc{
+    margin:6px 0 0;
+    font-size:0.92rem;
+    color:#A9C4BC;
+  }
   .contact-links{margin-top:24px; display:flex; flex-wrap:wrap; gap:16px 28px;}
   .contact-links a{
     color:var(--cream);
@@ -207,6 +218,63 @@
     padding-bottom:2px;
   }
   .contact-links a:hover{border-color:var(--cream);}
+
+  .contact-form{
+    margin-top:36px;
+    max-width:460px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .contact-form label{
+    font-size:0.85rem;
+    font-weight:600;
+    color:#CFE0DB;
+    margin-top:14px;
+  }
+  .contact-form input,
+  .contact-form textarea{
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    padding:10px 12px;
+    border-radius:6px;
+    border:1px solid rgba(247,244,236,0.3);
+    background:rgba(247,244,236,0.08);
+    color:var(--cream);
+    resize:vertical;
+  }
+  html[lang="ar"] .contact-form input,
+  html[lang="ar"] .contact-form textarea{ font-family:'Noto Sans Arabic', sans-serif; }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{color:#9FB6AF;}
+  .contact-form input:focus,
+  .contact-form textarea:focus{
+    outline:2px solid var(--clay);
+    outline-offset:1px;
+    background:rgba(247,244,236,0.14);
+  }
+  .contact-form button{
+    margin-top:20px;
+    align-self:flex-start;
+    background:var(--clay);
+    color:var(--cream);
+    border:none;
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    padding:12px 26px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .contact-form button:hover{background:#8F3122;}
+  .contact-form button:disabled{opacity:0.6; cursor:default;}
+  .cf-status{
+    margin:12px 0 0;
+    font-size:0.9rem;
+    min-height:1.3em;
+  }
+  .cf-status.success{color:#9FE0B8;}
+  .cf-status.error{color:#F0A79A;}
 
   footer{
     text-align:left;
@@ -259,7 +327,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-top">
-      <img src="profile.jpg" alt="Abdirizak Hirsi Abdikarim" class="profile-photo">
+      <img src="profile.jpg" alt="Abdirizak Hirsi" class="profile-photo">
       <div>
         <h1>Abdirizak Hirsi</h1>
         <p class="role" data-i18n="role">Multilingual worker based in Tortosa, Catalonia — hospitality, logistics, construction and remote support work, in four languages.</p>
@@ -378,9 +446,26 @@
       <p data-i18n="contact_text">Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.</p>
       <div class="contact-links">
         <a href="mailto:updihirsi2023@gmail.com">updihirsi2023@gmail.com</a>
-        <a href="tel:+34671931375">+34 671 931 375</a>
-        
+        <a href="tel:+34671931375">+34 671 93 13 75</a>
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+
+      <form id="contact-form" class="contact-form">
+        <h3 data-i18n="form_heading">Send a message</h3>
+        <p class="form-desc" data-i18n="form_description">Prefer writing it out? Fill in the form below and I'll get back to you directly.</p>
+
+        <label for="cf-name" data-i18n="form_name_label">Name</label>
+        <input type="text" id="cf-name" name="name" required>
+
+        <label for="cf-email" data-i18n="form_email_label">Email</label>
+        <input type="email" id="cf-email" name="email" required>
+
+        <label for="cf-message" data-i18n="form_message_label">Message</label>
+        <textarea id="cf-message" name="message" rows="4" required></textarea>
+
+        <button type="submit" data-i18n="form_submit">Send message</button>
+        <p id="cf-status" class="cf-status" role="status"></p>
+      </form>
     </div>
   </section>
 
@@ -420,6 +505,9 @@ const translations = {
     eyebrow_contact: "Get in touch",
     contact_title: "Let's talk",
     contact_text: "Open to hospitality, logistics, construction, and freelance opportunities. Reach out directly below.",
+    form_name_label: "Name", form_email_label: "Email", form_message_label: "Message", form_submit: "Send message",
+    form_heading: "Send a message", form_description: "Prefer writing it out? Fill in the form below and I'll get back to you directly.",
+    form_sending: "Sending…", form_success: "Thanks — your message has been sent.", form_error: "Something went wrong. Please try again or email me directly.",
     footer_location: "Abdirizak Hirsi — Tortosa, Catalonia"
   },
   es: {
@@ -448,6 +536,9 @@ const translations = {
     eyebrow_contact: "Contacto",
     contact_title: "Hablemos",
     contact_text: "Abierto a oportunidades en hostelería, logística, construcción y trabajo freelance. Contacta directamente abajo.",
+    form_name_label: "Nombre", form_email_label: "Correo electrónico", form_message_label: "Mensaje", form_submit: "Enviar mensaje",
+    form_heading: "Envía un mensaje", form_description: "¿Prefieres escribirlo? Rellena el formulario y te responderé directamente.",
+    form_sending: "Enviando…", form_success: "Gracias — tu mensaje ha sido enviado.", form_error: "Algo salió mal. Inténtalo de nuevo o escríbeme directamente por correo.",
     footer_location: "Abdirizak Hirsi — Tortosa, Cataluña"
   },
   ca: {
@@ -476,6 +567,9 @@ const translations = {
     eyebrow_contact: "Contacte",
     contact_title: "Parlem",
     contact_text: "Obert a oportunitats en hostaleria, logística, construcció i treball freelance. Contacta directament a sota.",
+    form_name_label: "Nom", form_email_label: "Correu electrònic", form_message_label: "Missatge", form_submit: "Enviar missatge",
+    form_heading: "Envia un missatge", form_description: "Prefereixes escriure-ho? Omple el formulari i et respondré directament.",
+    form_sending: "Enviant…", form_success: "Gràcies — el teu missatge ha estat enviat.", form_error: "Alguna cosa ha fallat. Torna-ho a provar o escriu-me directament per correu.",
     footer_location: "Abdirizak Hirsi — Tortosa, Catalunya"
   },
   ar: {
@@ -504,6 +598,9 @@ const translations = {
     eyebrow_contact: "تواصل معي",
     contact_title: "لنتحدث",
     contact_text: "منفتح على فرص في الضيافة واللوجستيات والبناء والعمل الحر. تواصل مباشرة أدناه.",
+    form_name_label: "الاسم", form_email_label: "البريد الإلكتروني", form_message_label: "الرسالة", form_submit: "إرسال الرسالة",
+    form_heading: "أرسل رسالة", form_description: "هل تفضل الكتابة؟ املأ النموذج أدناه وسأرد عليك مباشرة.",
+    form_sending: "جارٍ الإرسال…", form_success: "شكرًا — تم إرسال رسالتك.", form_error: "حدث خطأ ما. حاول مرة أخرى أو راسلني مباشرة عبر البريد الإلكتروني.",
     footer_location: "عبد الرزاق حرسي — تورتوسا، كتالونيا"
   }
 };
@@ -533,6 +630,57 @@ try {
   if(saved && translations[saved]) initialLang = saved;
 } catch(e){}
 setLanguage(initialLang);
+
+// --- Contact form -> Supabase ---
+const SUPABASE_URL = 'https://eqpgcpmfpimgblzazqrs.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_1N1Y3qIbLtP-l0uWJo1DOQ_luS-XKFr';
+
+const contactForm = document.getElementById('contact-form');
+const cfStatus = document.getElementById('cf-status');
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const lang = document.documentElement.getAttribute('lang') || 'en';
+  const dict = translations[lang];
+
+  const payload = {
+    name: document.getElementById('cf-name').value.trim(),
+    email: document.getElementById('cf-email').value.trim(),
+    message: document.getElementById('cf-message').value.trim()
+  };
+
+  submitBtn.disabled = true;
+  cfStatus.className = 'cf-status';
+  cfStatus.textContent = dict.form_sending;
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/messages`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      cfStatus.className = 'cf-status success';
+      cfStatus.textContent = dict.form_success;
+      contactForm.reset();
+    } else {
+      cfStatus.className = 'cf-status error';
+      cfStatus.textContent = dict.form_error;
+    }
+  } catch (err) {
+    cfStatus.className = 'cf-status error';
+    cfStatus.textContent = dict.form_error;
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
 </script>
 
 </body>
